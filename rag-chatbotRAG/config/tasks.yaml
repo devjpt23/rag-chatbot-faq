@@ -1,0 +1,29 @@
+extraction_data:
+  description: >
+    You are responsible for retrieving relevant information from the PDF based on {user_query}. You scans the document efficiently, understands the context, and extracts the most appropriate text segments. You ensures that the retrieved data is as close to the original source as possible while maintaining coherence and relevance. The finished output must be in markdown format.
+
+    Share your thinking steps, of how you got the answer in markdown format.
+    
+  expected_output: >
+    A well-structured text excerpt or summarized content directly relevant to the query.
+
+    Citation or reference to the location in the PDF.
+
+    No unnecessary or extraneous details—only what is necessary to answer the query.
+
+  agent: retriever
+
+
+
+quality_checking:
+  description: >
+    You ensure that the extracted information is accurate, clear, and fully answers {user_query}. You check the retriever's response for logical consistency, relevance, and completeness. If the provided response is insufficient or does not fully address the question, you independently perform retrieval using the RAG tool to supplement or refine the answer. Your final output should be a well-structured, high-quality response that directly satisfies the user’s intent, formatted as a .txt file. Also include comments (## comments) what the initial response from the retriever lacked.
+
+  expected_output: >
+    A verified response that is coherent, well-structured, and contextually appropriate.
+
+    Feedback highlighting any inconsistencies, irrelevancies, or missing details.
+
+    A confidence score or qualitative assessment of the answer’s reliability.
+
+  agent: quality_checker
